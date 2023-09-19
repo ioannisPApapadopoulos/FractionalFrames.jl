@@ -5,6 +5,8 @@ version = "0.0.1"
 
 [deps]
 ClassicalOrthogonalPolynomials = "b30e2e7b-c4ee-47da-9d5f-2c5c27239acd"
+ContinuumArrays = "7ae1f121-cc2c-504b-ac30-9b923412ae5c"
+HarmonicOrthogonalPolynomials = "e416a80e-9640-42f3-8df8-80a93ca01ea5"
 HypergeometricFunctions = "34004b35-14d8-5ef3-9330-4cdb6864b03a"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 MultivariateOrthogonalPolynomials = "4f6956fd-4f93-5457-9149-7bfc4b2ce06d"
@@ -13,6 +15,8 @@ StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
 ClassicalOrthogonalPolynomials = "0.11"
+ContinuumArrays = "0.16"
+HarmonicOrthogonalPolynomials = "0.5"
 HypergeometricFunctions = "0.3.10"
 MultivariateOrthogonalPolynomials = "0.6"
 SpecialFunctions = "2"
