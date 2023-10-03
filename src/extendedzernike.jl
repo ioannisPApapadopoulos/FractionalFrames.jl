@@ -34,20 +34,19 @@ function getindex(Z::ExtendedZernike{T},  xy::StaticVector{2}, j::Int)::T where 
     n = (ℓ - m) ÷ 2
     𝐣 = isodd.(ℓ .- k)
 
-    c1 = (4*one(T))^s*gamma(1+s+n) / gamma(n+one(T))
-    c2 = gamma(d/2+m+s+n) / gamma(d/2+m+n)
+    c1 = (4*one(T))^s* exp( loggamma(1+s+n) - loggamma(n+one(T)) + loggamma(d/2+m+s+n) - loggamma(d/2+m+n) )
 
+    xy in UnitDisk{T}() && return c1*Zernike{T}(a, b)[xy, j]
 
-    xy in UnitDisk{T}() && return c1*c2*Zernike{T}(a, b)[xy, j]
-
-    nrm = sqrt(convert(T,2)^(m+a+b+2-iszero(m))/π) / sqrt((massmatrix(Jacobi{T}(b,a+m)).diag)[n+1])
-    c3 = (-1)^n * gamma(d/2+m+n+s)/(gamma(-n-s)*gamma(d/2+m+2n+s+1))
+    nrm = sqrt(convert(T,2)^(m+a+b+2-iszero(m))/π) / sqrt((weightedgrammatrix(Jacobi{T}(b,a+m)).diag)[n+1])
     
+    c2 = (-1)^n * (4*one(T))^s* exp( loggamma(1+s+n) - loggamma(n+one(T)) + loggamma(d/2+m+n+s) - loggamma(d/2+m+2n+s+1) ) / gamma(-n-s)
+
     rθ = RadialCoordinate(xy)
     r, θ = rθ.r, rθ.θ
 
     V = 𝐣 == 1 ? r^m*cos(m*θ) : r^m*sin(m*θ)
-    return c1*c3 * nrm * V * _₂F₁(n+s+1,d/2+m+n+s,d/2+m+2n+s+1,one(T)/r^2) / (r^(d+2*(m+n+s)))
+    return c2 * nrm * V * _₂F₁(n+s+1,d/2+m+n+s,d/2+m+2n+s+1,one(T)/r^2) / (r^(d+2*(m+n+s)))
 end
 
 #### 

@@ -4,9 +4,9 @@ using ClassicalOrthogonalPolynomials, ContinuumArrays, HarmonicOrthogonalPolynom
     SpecialFunctions, StaticArrays, LinearAlgebra
 
 import Base: in, axes, getindex, ==, oneto, *, \, +, -, convert, broadcasted
-import ClassicalOrthogonalPolynomials: ∞, Derivative, jacobimatrix, @simplify, HalfLine, Weight, orthogonalityweight, recurrencecoefficients, ℝ, OneToInf
+import ClassicalOrthogonalPolynomials: ∞, Derivative, jacobimatrix, @simplify, HalfLine, Weight, orthogonalityweight, recurrencecoefficients, ℝ, OneToInf,  weightedgrammatrix
 import ContinuumArrays: Basis, QuasiAdjoint, AbstractQuasiArray, ApplyQuasiMatrix
-import HarmonicOrthogonalPolynomials: AbsLaplacianPower
+import HarmonicOrthogonalPolynomials: AbsLaplacianPower, blockedrange, findblockindex
 import HypergeometricFunctions: _₂F₁general2
 
 include("extendedchebyshev.jl")
