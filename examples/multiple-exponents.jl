@@ -83,7 +83,7 @@ savefig("coeff-mult-exp-jacobi.pdf")
 
 plot(Ns, [rhs_error soln_error],
     label=["RHS" "Solution"],
-    ylabel=L"$\infty\mathrm{-norm \;\; error}$",
+    ylabel=L"$\ell^\infty\mathrm{-norm \;\; error}$",
     xlabel=L"$\# \, \mathrm{frame \; functions}$",
     ylim=[1e-15, 5e0],
     yscale=:log10,

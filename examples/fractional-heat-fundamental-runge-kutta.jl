@@ -61,7 +61,7 @@ P = (L*T̃)[:,2:∞]
 Q = L*W
 
 # Collocation points
-M = 5001; Me = 5001; Mn = 211
+M = 5001; Me = 5001; Mn = 250
 xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
 
 # Sum space approximation the solution
@@ -77,6 +77,7 @@ Aₛ   = Matrix(S[xc, 1:Mn]);
 
 # Expand initial condition in solution space
 u₀ = Aₚ \ u0.(xc)
+norm(Aₚ*u₀ - u0.(xc), Inf)
 # plot(xc, abs.(Aₚ*u₀ - u0.(xc)))
 
 # λ is the inverse of the timestep δt
@@ -136,7 +137,10 @@ for (A, b, j) in zip(As, bs, 1:length(bs))
     end
 end
 
-plot(inv.(λs), errors,
+using JLD
+errors = JLD.load("examples/logs/errors-fractional-heat.jld")["errors"]
+
+p = plot(inv.(λs), errors,
     markershape=[:+ :diamond :dtriangle :circle],
     xlabel=L"$\delta t$",
     xtickfontsize=12, ytickfontsize=12,xlabelfontsize=15,ylabelfontsize=15,
@@ -144,11 +148,14 @@ plot(inv.(λs), errors,
     yscale=:log10,
     xscale=:log10,
     yaxis=[1e-11, 3e-1],
-    label = ["Backward Euler" "Implicit midpoint" "Gauss-Legendre(2)" "Gauss-Legendre(3)"],
-    legend =:topleft,
+    label = ["Backward Euler" "Implicit midpoint" "Gauss-Legendre (4th order)" "Gauss-Legendre (6th order)"],
+    legend =:outerright,
     xtick=[1e-4,1e-3,1e-2,1e-1,1e0],
     ytick=[1e-10, 1e-8, 1e-6, 1e-4, 1e-2],
-    palette=[:orangered, :skyblue2, :orange, :purple1]
+    palette=[:orangered, :skyblue2, :orange, :purple1],
+    gridlinewidth = 2,
+    size=(850,400),
+    margin=4Plots.mm
 )
 
 # Compute and plot theoretical rates in dashed lines
@@ -163,6 +170,5 @@ plot!(inv.(λs), rates,
     label = ["" "" "" ""],
     palette=[:orangered, :skyblue2, :orange, :purple1]
 )
-
 
 savefig("fractional-heat-convergence.pdf")

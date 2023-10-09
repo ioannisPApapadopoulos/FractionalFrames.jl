@@ -23,7 +23,7 @@ intervals = [-5.,-3,-1,1,3,5]
 u0 = x -> 1. / (x^2 + 1) 
 
 # Collocation points
-M = 5001; Me = 5001; Mn = 211
+M = 5001; Me = 5001; Mn = 250
 xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
 
 # Variable exponent of fractional Laplacian
@@ -57,8 +57,8 @@ u = [u₀]
 # Run time-stepping loop
 @time for k_ = 1:λ
     # Assemble least-squares frame matrices
-    @time Aₛ = Matrix(S[k_+1][xc, 1:Mn]);
-    @time Aₚ = Matrix(Sₚ[k_+1][xc, 1:Mn]);
+    Aₛ = Matrix(S[k_+1][xc, 1:Mn]);
+    Aₚ = Matrix(Sₚ[k_+1][xc, 1:Mn]);
     # Runge-Kutta least squares frame matrix
     Aₖ = kron(I(length(b)), Aₚ) + δt.*kron(A, Aₛ)
 
@@ -114,6 +114,7 @@ for t in [0., 0.5, 1.]
     append!(us, [u])
 end
 
+
 ###
 # Plotting
 ###
@@ -126,6 +127,7 @@ p = plot(xc, [Ap[1]*us[1][end] Ap[3]*u[end] Ap[2]*us[2][end] Ap[3]*us[3][end]],
         xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
         linewidth=2,
         markersize=3,
-        linestyle=[:dash :solid  :dot :dashdot]
+        linestyle=[:dash :solid  :dot :dashdot],
+        gridlinewidth=2,
 )
 savefig("variable-s.pdf")

@@ -31,6 +31,9 @@ affinetransform(a,b,x) = 2 /(b-a) * (x-(a+b)/2)
 
 at(a,b,x) = (b-a)/2 * x .+ (b+a)/2
 
+sqrtx2(z::Number) = sqrt(z-1)*sqrt(z+1)
+sqrtx2(x::Real) = sign(x)*sqrt(x^2-1)
+
 # Construct collocation points
 function collocation_points(M::Int, Me::Int; I::AbstractVector=[-1.,1.], endpoints::AbstractVector=[-5.,5.], innergap::Real = 0., remove_endpoints::Bool=false)
     Tp = eltype(I)
