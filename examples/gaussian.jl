@@ -98,3 +98,15 @@ plot(Ns, [rhs_error soln_error],
     yticks=[1e-15, 1e-10,1e-5, 1e0]
 )
 savefig("error-gaussian-jacobi.pdf")
+
+# Plot error of tails
+xtails = -1000:1000
+plot(xtails, abs.(Sₚ[xtails, 1:Ns[end]]*gs[end]-ua.(xtails)),
+    ylabel=L"$\mathrm{pointwise\;\; error}$",
+    xlabel=L"$x$",
+    legend=:none,
+    xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
+    linewidth=2,
+    markersize=5,
+)
+savefig("tails-gaussian-jacobi.pdf")
