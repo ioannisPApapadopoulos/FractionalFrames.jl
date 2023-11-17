@@ -14,4 +14,4 @@ We numerically approximate the solution to equations involving fractional Laplac
 |5|[variable-s-runge-kutta.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/variable-s-runge-kutta.jl)|
 
 ## Contact
-Ioannis Papadopoulos: ioannis.papadopoulos13@imperial.ac.uk
+Ioannis Papadopoulos: papadopoulos@wias-berlin.de
