@@ -2,7 +2,13 @@ using FractionalFrames
 using StaticArrays, SpecialFunctions, HypergeometricFunctions, LinearAlgebra
 using Plots, LaTeXStrings
 using Serialization
-# include("../plotting/plotting.jl")
+
+"""
+Section 7.3:
+
+Solving (I + (-Δ)^1/2) u(x,y) = f(x,y), where the solution is u(x,y) = exp(-x²-y²).
+"""
+
 
 
 # Gaussian Solution

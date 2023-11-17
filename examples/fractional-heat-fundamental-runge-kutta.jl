@@ -2,7 +2,7 @@ using FractionalFrames, LinearAlgebra
 using Plots, LaTeXStrings
 
 """
-Section 7.2
+Section 7.4
 
 Solving the fractional heat equation
     (∂ₜ + (-Δ)ˢ) u = 0, u₀(x) = (1+x²)⁻ˢ.
@@ -136,9 +136,6 @@ for (A, b, j) in zip(As, bs, 1:length(bs))
         print("Method $j, timestep=$δt\n")
     end
 end
-
-using JLD
-errors = JLD.load("examples/logs/errors-fractional-heat.jld")["errors"]
 
 p = plot(inv.(λs), errors,
     markershape=[:+ :diamond :dtriangle :circle],

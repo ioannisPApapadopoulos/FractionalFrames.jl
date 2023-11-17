@@ -2,6 +2,12 @@ using FractionalFrames, SpecialFunctions, HypergeometricFunctions
 using LinearAlgebra
 using Plots
 
+"""
+Section 7.2:
+
+Solving (I + (-Δ)^1/3 + (-Δ)^1/5) u = f, where the solution is u(x) = exp(-x²).
+"""
+
 λ, s, t =1, 1/3, 1/5
 
 # Exact solution
