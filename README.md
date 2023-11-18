@@ -2,9 +2,9 @@
 
 This repository implements the numerical examples found in two manuscripts:
 
-(1) "Explicit fractional Laplacians and Riesz potentials of classical functions", Timon S. Gutleb, I. P. A. Papadopoulos (2023)
+(1) "Explicit fractional Laplacians and Riesz potentials of classical functions", Timon S. Gutleb, Ioannis. P. A. Papadopoulos (2023).
 
-(2) "A frame approach for equations involving the fractional Laplacian", I. P. A. Papadopoulos, Timon S. Gutleb, José A. Carrillo, and S. Olver (2023).
+(2) "A frame approach for equations involving the fractional Laplacian", Ioannis. P. A. Papadopoulos, Timon S. Gutleb, José A. Carrillo, and Sheehan Olver (2023).
 
 We numerically approximate the solution to equations involving fractional Laplacian operators via frame approach. This approach reduces solving an equation with nonlocal terms to an interpolation problem for the right-hand side. We find expansions via a truncated SVD which alleviates the perceived ill-conditioning.
 
