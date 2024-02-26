@@ -94,7 +94,7 @@ xtails = -1000:1000
 errors = abs.(Sₚ[xtails,1:Mn]*Us[:,end] - y.(xtails, 1))
 
 plot(xtails, errors,
-    ylabel=L"$|u(x,1) - \mathbf{S}_n(x)\mathbf{u}_J|$",
+    ylabel=L"$|u(x,1) - \mathbf{\Phi}_N(x)\mathbf{u}_J|$",
     xlabel=L"$x$",
     title=L"$t=1$",
     legend=:none,
