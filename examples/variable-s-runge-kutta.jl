@@ -20,7 +20,7 @@ T = Float64
 intervals = [-5.,-3,-1,1,3,5]
 
 # Initial state
-u0 = x -> 1. / (x^2 + 1) 
+u0 = x -> 1. / (x^2 + 1)
 
 # Collocation points
 M = 5001; Me = 5001; Mn = 250
@@ -102,16 +102,16 @@ for t in [0., 0.5, 1.]
     # Construct least squares Runge-Kutta frame matrix
     Aₖ = kron(I(length(b)), Aₚ) + δt.*kron(A, Aₛ)
 
-    u = [u₀]
+    v = [u₀]
     # Run Runge-Kutta time loop
     @time for k_ = 1:λ
         l = length(b)
-        b_ = -Aₛ*u[k_]
+        b_ = -Aₛ*v[k_]
         k = Aₖ \repeat(b_, l)
         s = [b[j]*k[(j-1)*Mn+1:j*Mn] for j in 1:l]
-        append!(u, [u[k_] + δt.*sum(s)])
+        append!(v, [v[k_] + δt.*sum(s)])
     end
-    append!(us, [u])
+    append!(us, [v])
 end
 
 
@@ -131,3 +131,18 @@ p = plot(xc, [Ap[1]*us[1][end] Ap[3]*u[end] Ap[2]*us[2][end] Ap[3]*us[3][end]],
         gridlinewidth=2,
 )
 savefig("variable-s.pdf")
+
+p = plot(xc, [Ap[3]*u[end]],
+        title="time = 1(s)",
+        label=L"s=1/2-t/3",
+        color=palette(:tab10)[2],
+        legend=:topleft,
+        xlabel=L"$x$",
+        ylabel=L"$u(x)$",
+        xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
+        linewidth=2,
+        markersize=3,
+        linestyle=[:solid],
+        gridlinewidth=2,
+)
+savefig("variable-s-solo.pdf")
