@@ -23,8 +23,8 @@ intervals = [-5.,-3,-1,1,3,5]
 u0 = x -> 1. / (x^2 + 1)
 
 # Collocation points
-M = 5001; Me = 5001; Mn = 250
-xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
+M = 250; Mn = 250
+xc = collocation_points(M, M, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
 
 # Variable exponent of fractional Laplacian
 frac_s(t) = 1/2 - t/3
@@ -56,6 +56,7 @@ As_ = S[1][xc, 1:Mn]
 u = [u₀]
 # Run time-stepping loop
 @time for k_ = 1:λ
+    print("Iteration: $k_.\n")
     # Assemble least-squares frame matrices
     Aₛ = Matrix(S[k_+1][xc, 1:Mn]);
     Aₚ = Matrix(Sₚ[k_+1][xc, 1:Mn]);

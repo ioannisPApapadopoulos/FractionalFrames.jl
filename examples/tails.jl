@@ -41,8 +41,8 @@ P = (L*T̃)[:,2:∞]
 Q = L*W
 
 # Collocation points
-M = 5001; Me = 5001; Mn = 250
-xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
+M = 2000; Mn = 250
+xc = collocation_points(M, M, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
 
 # Sum space approximation the solution
 # Evalulation is SIGNIFICANTLY faster if we pass the type of the tuple
@@ -103,6 +103,6 @@ plot(xtails, errors,
     linewidth=2,
     markersize=5,
     yaxis=:log10,
-    yticks=[1e-15,1e-14,1e-13,1e-12,1e-11]
+    yticks=[1e-17,1e-16,1e-15,1e-14,1e-13,1e-12,1e-11]
 )
 savefig("fractional-heat-tails.pdf")

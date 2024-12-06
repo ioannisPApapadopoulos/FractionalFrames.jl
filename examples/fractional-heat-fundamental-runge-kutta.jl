@@ -61,17 +61,17 @@ P = (L*T̃)[:,2:∞]
 Q = L*W
 
 # Collocation points
-M = 5001; Me = 5001; Mn = 250
-xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
+M = 2000; Mn = 250
+xc = collocation_points(M, M, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-4)
 
 # Sum space approximation the solution
-# Evalulation is SIGNIFICANTLY faster if we pass the type of the tuple
+# Evaluation is SIGNIFICANTLY faster if we pass the type of the tuple
 Sₚ = SumSpace{T, Tuple{typeof(T̃[:, 2:∞]), typeof(W)}}((T̃[:, 2:∞], W), intervals)
 # Least-squares frame matrix for solution space
 @time Aₚ = Matrix(Sₚ[xc, 1:Mn]);
 
 # Dual sum space
-# Evalulation is SIGNIFICANTLY faster if we pass the type of the tuple
+# Evaluation is SIGNIFICANTLY faster if we pass the type of the tuple
 S = SumSpace{T, Tuple{typeof(P), typeof(Q)}}((P, Q), intervals)
 Aₛ   = Matrix(S[xc, 1:Mn]);
 

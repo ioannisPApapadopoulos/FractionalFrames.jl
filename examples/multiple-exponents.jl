@@ -1,6 +1,6 @@
 using FractionalFrames, SpecialFunctions, HypergeometricFunctions
 using LinearAlgebra
-using Plots
+using Plots, LaTeXStrings
 
 """
 Section 7.2:
@@ -36,11 +36,6 @@ Lt = AbsLaplacianPower(axes(W,1), t)
 P = T̃ + Ls*T̃ + Lt*T̃
 Q = W + Ls*W + Lt*W
 
-
-# Collocation points
-M = 5001; Me = 5001;
-xc = collocation_points(M, Me, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-2)
-
 # Form the frame for the solution
 Sₚ = SumSpace{T, Tuple{typeof(T̃), typeof(W)}}((T̃, W), intervals)
 # Form the frame of the right-hand side
@@ -51,11 +46,15 @@ gs = []
 rhs_error = []
 soln_error = []
 Ns = 10:10:250
-A = S[xc, 1:Ns[end]]
-Aₚ = Sₚ[xc, 1:Ns[end]]
-# Run expansion of right-hand side for increasing truncation degree
-for N in Ns
 
+for N in Ns
+    # Collocation points
+    M, Me = N+1, N+1
+    xc = collocation_points(N, N, I=intervals, endpoints=[-20*one(T),20*one(T)], innergap=1e-2)
+    A = S[xc, 1:N]
+    Aₚ = Sₚ[xc, 1:N]
+
+    # Run expansion of right-hand
     # Expand right-hand side
     g = Matrix(A[:,1:N]) \ ga.(xc, s, t)
     # Store coefficients
@@ -76,7 +75,7 @@ end
 
 plot(Ns, norm.(gs,Inf),
     markers=:circle,
-    xlabel=L"$\# \, \mathrm{frame \; functions}$",
+    xlabel=L"$\# \, \mathrm{frame \; functions} \,\,\, (N)$",
     ylabel=L"$\infty\mathrm{-norm}$",
     xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
     linewidth=2,
@@ -90,7 +89,7 @@ savefig("coeff-mult-exp-jacobi.pdf")
 plot(Ns, [rhs_error soln_error],
     label=["RHS" "Solution"],
     ylabel=L"$\ell^\infty\mathrm{-norm \;\; error}$",
-    xlabel=L"$\# \, \mathrm{frame \; functions}$",
+    xlabel=L"$\# \, \mathrm{frame \; functions} \,\,\, (N)$",
     ylim=[1e-15, 5e0],
     yscale=:log10,
     xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
