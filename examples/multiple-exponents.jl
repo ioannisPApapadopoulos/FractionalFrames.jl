@@ -76,7 +76,7 @@ end
 plot(Ns, norm.(gs,Inf),
     markers=:circle,
     xlabel=L"$\# \, \mathrm{frame \; functions} \,\,\, (N)$",
-    ylabel=L"$\infty\mathrm{-norm}$",
+    ylabel=L"$\ell^\infty\mathrm{-norm}$",
     xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,
     linewidth=2,
     marker=:dot,

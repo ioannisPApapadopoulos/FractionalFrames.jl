@@ -3,7 +3,7 @@ using StaticArrays, SpecialFunctions, HypergeometricFunctions, LinearAlgebra
 using Plots, LaTeXStrings
 
 """
-Section 7.3:
+Section 7.4:
 
 Solving (I + (-Δ)^1/2) u(x,y) = f(x,y), where the solution is u(x,y) = exp(-x²-y²).
 """
@@ -91,7 +91,7 @@ Plots.plot(10:10:110, errors,
     linewidth=2,
     markershape=:dtriangle,
     markersize=5,
-    ylabel=L"$l^\infty\mathrm{-norm \;\; error}$",
+    ylabel=L"$\ell^\infty\mathrm{-norm \;\; error}$",
     xlabel=L"$\# \, \mathrm{frame \; functions} \,\,\, (N)$",
     yscale=:log10,
     xtickfontsize=10, ytickfontsize=10,xlabelfontsize=15,ylabelfontsize=15,

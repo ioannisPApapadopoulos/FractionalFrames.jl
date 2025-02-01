@@ -2,7 +2,7 @@ using FractionalFrames, LinearAlgebra
 using Plots, LaTeXStrings
 
 """
-Section 7.4
+Section 7.5
 
 Solving the fractional heat equation
     (∂ₜ + (-Δ)ˢ) u = 0, u₀(x) = (1+x²)⁻ˢ.

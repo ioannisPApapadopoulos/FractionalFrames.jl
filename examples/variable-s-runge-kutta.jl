@@ -2,7 +2,7 @@ using FractionalFrames, LinearAlgebra
 using Plots, LaTeXStrings
 
 """
-Section 7.5
+Section 7.6
 
 Solving a fractional heat equation with a variable exponent s(t)
     (∂ₜ + (-Δ)ˢ⁽ᵗ⁾) u = 0, u₀(x) = (1+x²)⁻ˢ.

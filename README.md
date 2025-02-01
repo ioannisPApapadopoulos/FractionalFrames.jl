@@ -18,10 +18,11 @@ We numerically approximate the solution to equations involving fractional Laplac
 |:-:|:-:|
 |1|[gaussain.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/gaussian.jl)|
 |2|[multiple-exponents.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/multiple-exponents.jl)|
-|3|[2d-gaussian.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/2d-gaussian.jl)|
-|4a|[fractional-heat-fundamental-runge-kutta.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/fractional-heat-fundamental-runge-kutta.jl)|
-|4b|[tails.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/tails.jl)|
-|5|[variable-s-runge-kutta.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/variable-s-runge-kutta.jl)|
+|3|[piecewise-smooth-rhs.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/piecewise-smooth-rhs.jl)|
+|4|[2d-gaussian.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/2d-gaussian.jl)|
+|5a|[fractional-heat-fundamental-runge-kutta.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/fractional-heat-fundamental-runge-kutta.jl)|
+|5b|[tails.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/tails.jl)|
+|6|[variable-s-runge-kutta.jl](https://github.com/ioannisPApapadopoulos/FractionalFrames.jl/blob/main/examples/variable-s-runge-kutta.jl)|
 
 ## Contact
 Ioannis Papadopoulos: papadopoulos@wias-berlin.de

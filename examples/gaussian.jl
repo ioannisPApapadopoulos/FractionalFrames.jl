@@ -59,7 +59,7 @@ for N in Ns
     append!(rhs_error, norm(A[:,1:N]*g-ga.(xc, s), Inf))
     # writedlm("rhs_error_gaussian.txt", rhs_error)
 
-    # Compute errer in solution expansion
+    # Compute error in solution expansion
     append!(soln_error, norm(Aₚ[:,1:N]*g-ua.(xc), Inf))
     # writedlm("soln_error_gaussian.txt", soln_error)
 
@@ -85,7 +85,7 @@ savefig("coeff-gaussian-jacobi.pdf")
 # Plot convergence of right-hand side and solution
 plot(Ns, [rhs_error soln_error],
     label=["RHS" "Solution"],
-    ylabel=L"$\infty\mathrm{-norm \;\; error}$",
+    ylabel=L"$\ell^\infty\mathrm{-norm \;\; error}$",
     xlabel=L"$\# \, \mathrm{frame \; functions}\,\,\, (N)$",
     ylim=[1e-15, 5e0],
     yscale=:log10,
